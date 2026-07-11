@@ -1,6 +1,7 @@
 # css-spec
 
-A **dev-only**, Figma-style CSS design-spec overlay for **Next.js (App Router)**.
+A **dev-only** CSS inspector overlay for **Next.js (App Router)** — Chrome-DevTools-style
+inspection living in your local dev environment, built for pair-coding with AI.
 
 Hover any element to read its box model, type, and color spec. Open the inventory
 panel to edit design tokens live and write them back to your globals stylesheet.

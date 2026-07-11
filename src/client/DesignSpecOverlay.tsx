@@ -2142,15 +2142,25 @@ function DesignSpecOverlayInner({
           key="inv-chip"
           layoutId="ds-inventory"
           transition={INV_SPRING}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
           style={{ borderRadius: 999 }}
           className={styles.invChip}
           onClick={expandInventory}
           title="Expand the inventory panel"
         >
-          <motion.span layoutId="ds-inventory-title" layout="position">
+          {/* The label can't be scale-corrected while the surface morphs (it
+              stretches with the entering element), so it stays hidden until
+              the chip is near its real size, then fades in — and vanishes
+              instantly when the chip grows back into the panel. */}
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, transition: { duration: 0.05 } },
+              show: { opacity: 1, transition: { delay: 0.3, duration: 0.2 } },
+            }}
+          >
             inventory
           </motion.span>
         </motion.button>
@@ -2170,9 +2180,7 @@ function DesignSpecOverlayInner({
           )}
         >
           <div className={styles.inventoryHeader}>
-            <motion.h2 layoutId="ds-inventory-title" layout="position">
-              Page inventory
-            </motion.h2>
+            <h2>Page inventory</h2>
             <span className={styles.inventoryHeaderBtns}>
               <button
                 className={styles.refreshBtn}

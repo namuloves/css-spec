@@ -99,9 +99,9 @@ export type DesignSpecOverlayProps = {
    not at module load. */
 const defaultFetch: typeof fetch = (input, init) => fetch(input, init);
 
-/* Panel↔chip shared-element transition (motion layoutId): Apple-style
-   duration+bounce spring — perceptually done at `duration`, subtle bounce. */
-const INV_SPRING = { type: "spring", duration: 0.55, bounce: 0.15 } as const;
+/* Panel↔chip shared-element transition (motion layoutId): Apple's smooth
+   general-purpose spring — zero bounce so it glides in without snapping. */
+const INV_SPRING = { type: "spring", duration: 0.65, bounce: 0 } as const;
 
 /* Position a fixed tracking element on the compositor: transform instead of
    top/left, so the hover glide animates off the main thread and never
@@ -2158,7 +2158,7 @@ function DesignSpecOverlayInner({
           <motion.span
             variants={{
               hidden: { opacity: 0, transition: { duration: 0.05 } },
-              show: { opacity: 1, transition: { delay: 0.3, duration: 0.2 } },
+              show: { opacity: 1, transition: { delay: 0.35, duration: 0.25 } },
             }}
           >
             inventory

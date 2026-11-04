@@ -1,7 +1,7 @@
 {
   "name": "css-spec",
   "version": "0.6.0",
-  "description": "Dev-only CSS inspector overlay for Next.js App Router — DevTools-style hover inspection for your local dev environment, live design-token editing, and precise prompts for AI coding tools (Claude Code, Cursor).",
+  "description": "Dev-only CSS inspector overlay for Next.js App Router \u2014 DevTools-style hover inspection for your local dev environment, live design-token editing, and precise prompts for AI coding tools (Claude Code, Cursor).",
   "type": "module",
   "types": "./dist/client/index.d.ts",
   "bin": {
@@ -36,7 +36,8 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "postinstall": "node ./dist/cli/postinstall.js || true"
+    "postinstall": "node ./dist/cli/postinstall.js || true",
+    "site:sync": "npm run build && mkdir -p ../css-spec-site/vendor && cp dist/client/index.js dist/client/index.js.map dist/client/index.css dist/client/index.css.map ../css-spec-site/vendor/"
   },
   "peerDependencies": {
     "next": ">=14",

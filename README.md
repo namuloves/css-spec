@@ -77,12 +77,14 @@ Set it only if you mount the route somewhere else:
 <DesignSpecOverlay apiPath="/api/my-design-spec" />
 ```
 
-Two more optional props, plus a helper, for wiring the overlay into your own UI:
+Three more optional props, plus a helper, for wiring the overlay into your own UI:
 
 ```tsx
 import { DesignSpecOverlay, toggleDesignSpec } from "css-spec/client";
 
 <DesignSpecOverlay
+  // Start with inspect mode on (default: off until ⌥D).
+  defaultEnabled
   // Keep your own "Inspect" control in sync (also fires once on mount).
   onToggle={(enabled) => setInspecting(enabled)}
   // Custom transport for the dev API — mock it in demos/tests, or add headers.
